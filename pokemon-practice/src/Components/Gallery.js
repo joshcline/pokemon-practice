@@ -1,4 +1,4 @@
-function Gallery({ data }) {
+function Gallery() {
   const display = data.map(pokemon => {
     return (
       <li key={pokemon.name}>{pokemon.name}</li>

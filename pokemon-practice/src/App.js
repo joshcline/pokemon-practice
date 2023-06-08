@@ -1,7 +1,8 @@
 import { useState, useEffect} from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/NavBar';
 import Gallery from './Components/Gallery';
+import Pokemon from './Components/Pokemon';
 
 function App() {
   const [data, setData] = useState([]);
@@ -36,12 +37,17 @@ function App() {
     <div>
       <Router>
         <Navbar />
-          <h1>Pokemon!</h1>
-            <div style={{'display': 'inline-block'}}>
-              <button onClick={fetchPreviousPage}>Previous</button>
-              <button onClick={fetchNextPage}>Next</button>
-            </div>
-        <Gallery data={data} />
+        <h1>Pokemon!</h1>
+        <div style={{'display': 'inline-block'}}>
+          <button onClick={fetchPreviousPage}>Previous</button>
+          <button onClick={fetchNextPage}>Next</button>
+        </div>
+        <div>
+          <Routes>
+            <Route path='/' element={<Gallery data={data}/>}/>
+            <Route path='/pokemon' element={<Pokemon />}/>
+          </Routes>
+        </div>
       </Router>
     </div> 
   );
